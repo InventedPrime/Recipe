@@ -1,6 +1,11 @@
 :root {
   --yellow: #FFD700;
+  --lightyellow: #FFF8DC;
+  --grey: #f9f9f9;
   --dark: #0a0a0a;
+  --red: #f72121;
+  --lightred: #ff7e7e;
+  
 }
 * {
   margin: 0;
@@ -145,6 +150,8 @@ html.dark .hero-subtitle {
   padding: 4rem 1rem;
 }
 .section-title {
+  display: flex;
+  justify-content: center;
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   margin-bottom: 0.5rem;
 }
@@ -191,6 +198,101 @@ footer {
   color: #9ca3af;
   padding: 3rem 1rem;
   border-top: 1px solid #374151;
+  height: 100%;
+}
+
+.upload-form-container{
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: var(--grey);
+  filter: drop-shadow(0px 0px 2px var(--dark));
+}
+ .upload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+ }
+ #upload_image {
+  width: 200px;
+  height: 150px;
+  object-fit:cover;
+  border-radius: 30px;
+  border: 2px dashed #ccc;
+  cursor: pointer;
+ }
+ .upload-form-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+ }
+ .upload-form-div input {
+  text-align: center;
+  cursor: pointer;
+  width: 50%;
+ }
+ .upload-form-div-ingredient {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  cursor: pointer;
+ }
+  .upload-form-div-ingredient input {
+  cursor: pointer;
+  width: 50%;
+ }
+ .upload-form-div-ingredient input.quantity {
+  text-align: center;
+  width: 13%;
+ }
+  .upload-form-div-ingredient input.amount {
+  width: 10%;
+  }
+
+  .upload-button-add {
+    border-style: solid;
+    font: message-box;
+    background-color: var(--lightyellow);
+  }
+   .upload-button-add:hover {
+    border-style: solid;
+    font: message-box;
+
+    background-color: var(--yellow);
+  }
+.upload-button-remove {
+      border-style: solid;
+    font: message-box;
+    background-color: var(--lightred);
+}
+.upload-button-remove:hover {
+      border-style: solid;
+    font: message-box;
+    background-color: var(--red);
+}
+.upload-button-submit {
+  border-style: solid;
+  font: message-box;
+  font-size: 20px;
+  width: 50%;
+  height: 30px;
+  cursor: pointer;
+  background-color: var(--grey);
+}
+.upload-button-submit:hover {
+  border-style: solid;
+  font: message-box;
+  font-size: 20px;
+  background-color: lightgreen;
 }
 .footer-container {
   max-width: 1200px;
