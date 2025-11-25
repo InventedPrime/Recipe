@@ -23,8 +23,8 @@ Route::post('/upload', function (Request $request) {
     return back()->with('status', 'Recipe uploaded successfully!');
 })->name('upload.store');
 
-Route::get('/settings', function () {
-    return view('pages.settings');
+Route::get('/profile', function () {
+    return view('pages.profile');
 });
 
 use App\Http\Controllers\AuthController;
