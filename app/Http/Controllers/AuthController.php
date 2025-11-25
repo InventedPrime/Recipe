@@ -14,6 +14,13 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+    public function verifyLoginStatus() {
+        if (!Auth::check()) {
+            return redirect('/');
+        }
+        return null;
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -48,7 +55,7 @@ class AuthController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        Auth::login($user);
+        Auth::login($user, true);
 
         return redirect('/');
     }

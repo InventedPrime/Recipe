@@ -1,33 +1,57 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\{LogController, AuthController};
+use App\Models\{Recipe, RecipeImage};
 
 Route::get('/', function () {
     return view('pages.home');
 });
 
 Route::get('/search', function () {
+    if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
     return view('pages.search');
 });
 
 Route::get('/upload', function () {
+    if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
     return view('pages.upload');
 });
 
 Route::post('/upload', function (Request $request) {
-    // Minimal handling for now; validate the image exists
-    $validated = $request->validate([
-        'recipe_image' => ['required','image'],
-    ]);
-    return back()->with('status', 'Recipe uploaded successfully!');
-})->name('upload.store');
+    if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
+
+        $file = $request->file('recipe_image');
+
+        // Create the recipe
+        $recipe = Recipe::create([
+            'user_id' => Auth::id(),
+            'title' => $request->title,
+            'description' => $request->description ?? '',
+            'directions' => $request->directions ?? '',
+            'cook_time_min' => $request->cook_time_min ?? 0,
+            'prep_time_min' => $request->prep_time_min ?? 0,
+            'servings' => $request->servings ?? 1,
+            'status' => 'draft',
+        ]);
+
+        $imageData = base64_encode(file_get_contents($file->getRealPath()));
+        
+        $recipeImage = new RecipeImage();
+        $recipeImage->recipe_id = $recipe->id;
+        $recipeImage->image_data = $imageData;
+        $recipeImage->mime_type = $file->getMimeType();
+        $recipeImage->save();
+
+        return back()->with('status', 'Recipe uploaded successfully!');
+})->name('form.uploadRecipe');
 
 Route::get('/settings', function () {
+    if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
     return view('pages.settings');
 });
-
-use App\Http\Controllers\AuthController;
 
 // Authentication routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
