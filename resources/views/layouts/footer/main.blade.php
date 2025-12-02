@@ -27,7 +27,7 @@
             <div class="footer-section">
                 <h3>Contact</h3>
                 <ul>
-                    <li><a href="">contact@</a></li>
+                    <li><a href="">contact</a></li>
                     <li><a href="#">Twitter</a></li>
                     <li><a href="#">Instagram</a></li>
                     <li><a href="#">Facebook</a></li>
