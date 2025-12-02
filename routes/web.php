@@ -5,20 +5,30 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\{LogController, AuthController};
 use App\Models\{Recipe, RecipeImage};
+use Illuminate\Support\Facades\View;
+
 
 Route::get('/', function () {
     return view('pages.home');
-});
+})->name('home');
 
 Route::get('/search', function () {
+        $recipe_images = RecipeImage::get();
     if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
-    return view('pages.search');
+    return view('pages.search', ['recipe_images' => $recipe_images]);
+})->name('search');
+
+// This is what we use for debugging better
+Route::get('/debug-hints', function () {
+    dd(View::getFinder()->getHints());
 });
 
+
 Route::get('/upload', function () {
+
     if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
     return view('pages.upload');
-});
+})->name('upload');
 
 Route::post('/upload', function (Request $request) {
     if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
@@ -51,7 +61,7 @@ Route::post('/upload', function (Request $request) {
 Route::get('/settings', function () {
     if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
     return view('pages.settings');
-});
+})->name('settings');
 
 // Authentication routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
