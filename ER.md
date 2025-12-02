@@ -1,7 +1,8 @@
 # RecipeHub — Database ER Diagram
 
 ## Mermaid ER Diagram
-```mermaid 
+
+```mermaid
 erDiagram
     USERS {
       bigint id PK
@@ -88,5 +89,3 @@ erDiagram
     RECIPES ||--o{ RECIPE_CATEGORIES : categorized
     CATEGORIES ||--o{ RECIPE_CATEGORIES : contains
 ```
-
-

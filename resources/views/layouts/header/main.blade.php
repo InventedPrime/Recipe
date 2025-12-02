@@ -6,5 +6,6 @@
         @include("layouts.header.components.nav")
         
         @include("layouts.header.components.search")
+
     </div>
 </header>

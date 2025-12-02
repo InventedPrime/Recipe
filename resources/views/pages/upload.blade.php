@@ -14,16 +14,16 @@
 <section class="section"> 
      <h2 class="section-title" >Upload A Recipe</h2>
      <div class="upload-form-container">
-        <form action="{{ route('upload.store') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+        <form action="{{ route('form.uploadRecipe') }}" method="POST" enctype="multipart/form-data" class="upload-form">
             @csrf
             <label for="recipe_image" class="upload-image" >
-                <img id="upload_image" src="{{ Vite::asset('resources/img/plus_icon.png') }}" alt="Upload Image" />
+                <img id="upload_image" src="{{ asset('img/plus_icon.png') }}" alt="Upload Image" />
             </label>
-            <input type="file" id="recipe_image" accept="image/*" name="recipe_image" class="form-input visually-hidden" required hidden>
+            <input type="file" id="recipe_image" accept="image/*" name="recipe_image" class="visually-hidden" required>
 
             <div class="upload-form-div">
                 Recipe Title
-                <input type="text" placeholder="Title">
+                <input type="text" name="title" placeholder="Title" required>
             </div>
 
             <div class="upload-form-div-ingredient">
