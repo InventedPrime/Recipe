@@ -8,22 +8,26 @@ use App\Models\{Recipe, RecipeImage};
 use Illuminate\Support\Facades\View;
 
 
+// Home Page
 Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
+// Search Page
 Route::get('/search', function () {
         $recipe_images = RecipeImage::get();
     if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
     return view('pages.search', ['recipe_images' => $recipe_images]);
 })->name('search');
 
-// This is what we use for debugging better
-Route::get('/debug-hints', function () {
-    dd(View::getFinder()->getHints());
-});
 
+// Profile Page
+Route::get('/profile', function () {
+    if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
+    return view('pages.profile');
+})->name('profile');
 
+// Upload Page
 Route::get('/upload', function () {
 
     if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
@@ -58,6 +62,7 @@ Route::post('/upload', function (Request $request) {
         return back()->with('status', 'Recipe uploaded successfully!');
 })->name('form.uploadRecipe');
 
+// Settings Page
 Route::get('/settings', function () {
     if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
     return view('pages.settings');
@@ -69,3 +74,8 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// This is what we use for debugging better
+Route::get('/debug-hints', function () {
+    dd(View::getFinder()->getHints());
+});

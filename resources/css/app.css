@@ -39,41 +39,90 @@ header.navbar {
 html.dark header.navbar {
   background: #1a1a1a;
 }
-.navbar-container {
-  max-width: 1200px;
-  margin: 0 auto;
+.navbar-header-actions {
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
   align-items: center;
 }
+
+.navbar-profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    text-decoration:none;
+    color:inherit;
+  }
+
+  button {
+    background:none;
+    border:none;
+    color:var(--orange);
+    cursor:pointer;
+    font-weight:600;
+  }
+}
+.navbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+}
 .navbar-logo {
-  font-size: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
   font-weight: bold;
+  font-family:Apple Chancery;
   color: var(--yellow);
   cursor: pointer;
+  gap: 10px;
+
+  img {
+    filter: brightness(1.1);
+    width: 50px;
+    height: 50px;
+  }
 }
 .navbar-nav {
   display: flex;
-  gap: 2rem;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+
+  a {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    box-shadow: 0px 8px 2px var(--yellow);
+  }
+  a:hover {
+    font-size: 20px;
+    color: black;
+    padding: 10px;
+    margin-top: 10px;
+    box-shadow: 0px 4px 2px var(--yellow);
+  }
 }
-.navbar-nav a {
-  text-decoration: none;
-  color: #666;
-}
+
 html.dark .navbar-nav a {
   color: #aaa;
 }
 .navbar-nav a:hover {
   color: var(--yellow);
 }
-.navbar-actions {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
 .search-bar {
   display: flex;
   gap: 0.5rem;
+
+  input {
+  }
 }
 .search-bar input {
   padding: 0.5rem;
@@ -114,7 +163,16 @@ button {
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, rgba(255, 117, 15, .1), rgba(245, 48, 3, .05));
-  padding: 2rem;
+}
+.hero-img {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+  opacity: 0.4;
 }
 html.dark .hero {
   background: linear-gradient(135deg, rgba(255, 117, 15, .05), rgba(245, 48, 3, .02));
@@ -122,6 +180,10 @@ html.dark .hero {
 .hero-content {
   text-align: center;
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
 }
 .hero-tagline {
   font-size: clamp(2rem, 8vw, 4rem);
@@ -141,6 +203,7 @@ html.dark .hero-subtitle {
 }
 .hero-buttons {
   display: flex;
+  scale: 2;
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
@@ -370,7 +433,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  cursor:all-scroll;
+  z-index: 10;
 }
 .recipe-like-image {
   mask: var(--dark);

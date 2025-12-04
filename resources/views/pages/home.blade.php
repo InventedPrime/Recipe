@@ -13,22 +13,20 @@
     @include('layouts.header.main')
 
     <section class="hero">
+        <img class="hero-img" src={{ asset('img/hero/macroni.jpg') }} alt="">
         <div class="hero-content">
             <h1 class="hero-tagline">
                 Discover, Cook, and Share Your Favorite Recipes
             </h1>
             <p class="hero-subtitle">
-                Join our community of passionate home cooks. Explore trending recipes, share your culinary creations, and connect with food enthusiasts.
+                Join our community of passionate home cooks. Explore trending recipes, share your culinary creations,
+                and connect with food enthusiasts.
             </p>
             <div class="hero-buttons">
-                <button onclick="document.querySelector('.featured-section').scrollIntoView({ behavior: 'smooth' })" class="btn-primary">
+                <button onclick="document.querySelector('.featured-section').scrollIntoView({ behavior: 'smooth' })"
+                    class="btn-primary">
                     Explore Recipes
                 </button>
-                @auth
-                <button class="btn-secondary">
-                    Share Recipe
-                </button>
-                @endauth
             </div>
         </div>
     </section>
@@ -70,7 +68,7 @@
     </section>
 
     <!-- footer-->
-    @include("layouts.footer.main")
+    @include('layouts.footer.main')
     <!-- javascript -->
 
     <script>

@@ -1,4 +1,5 @@
 <!-- Logo -->
-<div class="navbar-logo" onclick="window.location.href='/'">
-    RecipeHome
+<div class="navbar-logo" onclick="location.href='{{ route('home') }}'">
+    <img src="{{ asset('img/header/favicon.png') }}" alt="Recipe Home">
+    Recipe Home
 </div>

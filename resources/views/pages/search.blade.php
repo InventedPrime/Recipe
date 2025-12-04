@@ -63,9 +63,7 @@
 
     @include('layouts.footer.main')
 
-
-    <!-- javascript -->
-    <script></script>
+    <form action="post"></form>
 
 </body>
 
