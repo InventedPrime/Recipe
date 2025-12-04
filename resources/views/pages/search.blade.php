@@ -27,10 +27,10 @@
     </section>
 
     <section class="section search-container">
-        @if ($recipe_images->count())
-            @foreach ($recipe_images as $recipe_image)
+        @if ($recipes->count())
+            @foreach ($recipes as $recipe)
                 <div class="recipe-search-container">
-                    <img class="recipe-search-image" src="data:image/png;base64, {{ $recipe_image->image_data }}"
+                    <img class="recipe-search-image" src="data:image/png;base64, {{ $recipe->image->image_data }}"
                         alt="">
                     <div class="recipe-tag-container"> {{-- category tag --}}
 
@@ -40,13 +40,13 @@
                         </div>
                         <div class="recipe-tag">
                             <img src={{ asset('img/tag.png') }} alt="tag">
-                            <p>can this fit long text? </p>
+                            <p>longer text to fit </p>
                         </div>
                     </div>
                     <div class="recipe-search-cover">
-                        <b>Sandwhich</b> {{-- title of recipe --}}
-                        <p>By Mike De La Cruz</p> {{-- Users name who created it --}}
-                        <p>30 minutes</p>
+                        <h1>{{ $recipe->title }}</h1> {{-- title of recipe --}}
+                        <p>By {{ $recipe->user->name }}</p> {{-- Users name who created it --}}
+                        <p>{{ $recipe->total_time_to_make }} minutes</p>
                         <p>Likes: ?</p>
                         {{-- How long it takes to make --}}
 

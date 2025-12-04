@@ -15,12 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('title');
-            $table->text('description');
-            $table->text('directions');
-            $table->integer('cook_time_min');
-            $table->integer('prep_time_min');
-            $table->integer('servings');
-            $table->string('status');
+            $table->integer('total_time_to_make');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

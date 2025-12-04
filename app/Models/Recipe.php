@@ -9,12 +9,7 @@ class Recipe extends Model
     protected $fillable = [
         'user_id',
         'title',
-        'description',
-        'directions',
-        'cook_time_min',
-        'prep_time_min',
-        'servings',
-        'status',
+        'total_time_to_make',
     ];
 
     public function user()
@@ -22,9 +17,9 @@ class Recipe extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function images()
+    public function image()
     {
-        return $this->hasMany(RecipeImage::class);
+        return $this->hasOne(RecipeImage::class);
     }
 
     public function ingredients()

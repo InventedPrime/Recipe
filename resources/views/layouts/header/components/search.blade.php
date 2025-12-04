@@ -1,7 +1,7 @@
         <!-- Search Bar & Actions -->
         <div class="search-bar">
             <input type="text" placeholder="Search recipes..." id="search-input">
-            <button onclick="searchRecipes()">Search</button>
+            <button onclick="window.location.href='{{ route('search') }}'">Search</button>
         </div>
         <div class="navbar-header-actions">
 

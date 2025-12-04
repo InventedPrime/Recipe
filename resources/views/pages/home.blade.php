@@ -23,7 +23,7 @@
                 and connect with food enthusiasts.
             </p>
             <div class="hero-buttons">
-                <button onclick="document.querySelector('.featured-section').scrollIntoView({ behavior: 'smooth' })"
+                <button onclick="document.querySelector('#latest-grid').scrollIntoView({ behavior: 'smooth' })"
                     class="btn-primary">
                     Explore Recipes
                 </button>
@@ -31,24 +31,6 @@
         </div>
     </section>
 
-    <!-- Featured Recipes Section -->
-    <section class="section featured-section">
-        <h2 class="section-title">Trending Recipes</h2>
-        <p class="section-subtitle">Discover what everyone's cooking right now</p>
-        <div class="recipe-grid" id="featured-grid">
-            <!-- Recipe cards will be populated here -->
-        </div>
-    </section>
-
-    <!-- Categories Section -->
-    <section class="section latest-section">
-        <h2 class="section-title">Browse by Category</h2>
-        <p class="section-subtitle">Explore recipes by your favorite cuisine</p>
-
-        <div class="category-grid" id="category-grid">
-            <!-- Category tiles will be populated here -->
-        </div>
-    </section>
 
     <!-- Latest Recipes Section -->
     <section class="section latest-section">
@@ -59,35 +41,13 @@
             <!-- Latest recipe cards will be populated here -->
         </div>
 
-        <div class="pagination" id="pagination">
-            <button class="active">1</button>
-            <button>2</button>
-            <button>3</button>
-            <button onclick="loadMore()">Load More</button>
-        </div>
     </section>
 
     <!-- footer-->
     @include('layouts.footer.main')
     <!-- javascript -->
 
-    <script>
-        function searchRecipes() {
-            const query = document.getElementById('search-input').value;
-            if (query.trim()) {
-                window.location.href = `/search?q=${encodeURIComponent(query)}`;
-            }
-        }
-
-        function toggleFavorite(recipeId) {
-            return;
-        }
-
-        function loadMore() {
-            // Implement load more functionality
-            console.log('Loading more recipes...');
-        }
-    </script>
+    <script></script>
 
 </body>
 

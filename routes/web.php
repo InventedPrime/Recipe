@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Http\Controllers\{LogController, AuthController};
+use App\Http\Controllers\{AuthController};
 use App\Models\{Recipe, RecipeImage};
 use Illuminate\Support\Facades\View;
 
@@ -15,9 +15,9 @@ Route::get('/', function () {
 
 // Search Page
 Route::get('/search', function () {
-        $recipe_images = RecipeImage::get();
     if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
-    return view('pages.search', ['recipe_images' => $recipe_images]);
+    $recipes = Recipe::with('image', 'user')->paginate(30);
+    return view('pages.search', ['recipes' => $recipes]);
 })->name('search');
 
 
@@ -35,38 +35,34 @@ Route::get('/upload', function () {
 })->name('upload');
 
 Route::post('/upload', function (Request $request) {
+    //dd($request->all());
     if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
 
-        $file = $request->file('recipe_image');
+    $file = $request->file('recipe_image');
 
-        // Create the recipe
-        $recipe = Recipe::create([
-            'user_id' => Auth::id(),
-            'title' => $request->title,
-            'description' => $request->description ?? '',
-            'directions' => $request->directions ?? '',
-            'cook_time_min' => $request->cook_time_min ?? 0,
-            'prep_time_min' => $request->prep_time_min ?? 0,
-            'servings' => $request->servings ?? 1,
-            'status' => 'draft',
-        ]);
+    // Create the recipe
+    $recipe = Recipe::create([
+        'user_id' => Auth::id(),
+        'title' => $request->title,
+        'total_time_to_make' => $request->total_time_to_make ?? 0,
+    ]);
 
-        $imageData = base64_encode(file_get_contents($file->getRealPath()));
-        
-        $recipeImage = new RecipeImage();
-        $recipeImage->recipe_id = $recipe->id;
-        $recipeImage->image_data = $imageData;
-        $recipeImage->mime_type = $file->getMimeType();
-        $recipeImage->save();
+    $imageData = base64_encode(file_get_contents($file->getRealPath()));
+    
+    $recipeImage = new RecipeImage();
+    $recipeImage->recipe_id = $recipe->id;
+    $recipeImage->image_data = $imageData;
+    $recipeImage->mime_type = $file->getMimeType();
+    $recipeImage->save();
 
-        return back()->with('status', 'Recipe uploaded successfully!');
+    return back()->with('status', 'Recipe uploaded successfully!');
 })->name('form.uploadRecipe');
 
 // Settings Page
-Route::get('/settings', function () {
-    if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
-    return view('pages.settings');
-})->name('settings');
+// Route::get('/settings', function () {
+//     if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
+//     return view('pages.settings');
+// })->name('settings');
 
 // Authentication routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -74,7 +70,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
+ 
 // This is what we use for debugging better
 Route::get('/debug-hints', function () {
     dd(View::getFinder()->getHints());
