@@ -16,7 +16,7 @@ class AuthController extends Controller
 
     public function verifyLoginStatus() {
         if (!Auth::check()) {
-            return redirect('/');
+            return redirect('/login');
         }
         return null;
     }
