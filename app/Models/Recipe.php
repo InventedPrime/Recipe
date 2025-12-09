@@ -27,21 +27,6 @@ class Recipe extends Model
         return $this->hasMany(Ingredient::class);
     }
 
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
-
-    public function likes()
-    {
-        return $this->hasMany(Like::class);
-    }
-
-    public function saves()
-    {
-        return $this->hasMany(Save::class);
-    }
-
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'recipe_categories');
