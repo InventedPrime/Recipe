@@ -19,8 +19,8 @@
             <label for="recipe_image" class="upload-image">
                 <img id="upload-image" src="{{ asset('img/plus_icon.png') }}" alt="Upload Image" />
             </label>
-            <input type="file" id="recipe_image" accept="image/*" name="recipe_image" class="visually-hidden"
-                required>
+            <input type="file" id="recipe_image" accept="image/*" name="recipe_image" size="500"
+                class="visually-hidden" required>
 
             <div class="upload-form-div">
                 <h1>Recipe Title</h1>
@@ -74,6 +74,23 @@
             <div class="upload-form-div">
                 <h1>Total Time To Make</h1>
                 <input type="number" name="total_time_to_make" placeholder="Total time in minutes..." required>
+            </div>
+
+
+            <div class="upload-form-div">
+                <h1>Category</h1>
+                <select class="upload-category" name="category" id="category" required>
+                    <option value="american">🍔 American</option>
+                    <option value="asian">🍱 Asian</option>
+                    <option value="italian">🍝 Italian</option>
+                    <option value="mexican">🌮 Mexican</option>
+                    <option value="mediterranean">🥙 Mediterranean</option>
+                    <option value="dessert">🥮 Dessert</option>
+                    <option value="french">🥐 French</option>
+                    <option value="vegan">🥦 Vegan</option>
+                    <option value="seafood">🦞 Seafood</option>
+                    <option value="breakfast">🍳 Breakfast</option>
+                </select>
             </div>
 
 

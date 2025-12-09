@@ -279,6 +279,12 @@ footer {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+.upload-category {
+  width: 50%;
+  height: 50px;
+  font-size: 2rem;
+  text-align: center;
+}
  .upload-form {
   display: flex;
   flex-direction: column;

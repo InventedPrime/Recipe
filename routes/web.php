@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\{AuthController};
-use App\Models\{Recipe, RecipeImage};
+use App\Models\{Recipe, RecipeCategory, RecipeImage};
 use Illuminate\Support\Facades\View;
 
 
@@ -35,7 +35,7 @@ Route::get('/upload', function () {
 })->name('upload');
 
 Route::post('/upload', function (Request $request) {
-    //dd($request->all());
+    dd($request->all());
     if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
 
     $file = $request->file('recipe_image');
@@ -54,6 +54,8 @@ Route::post('/upload', function (Request $request) {
     $recipeImage->image_data = $imageData;
     $recipeImage->mime_type = $file->getMimeType();
     $recipeImage->save();
+
+    $recipeCategory = new RecipeCategory();
 
     return back()->with('status', 'Recipe uploaded successfully!');
 })->name('form.uploadRecipe');

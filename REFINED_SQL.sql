@@ -13,13 +13,8 @@ CREATE TABLE users (
 CREATE TABLE recipes (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     user_id BIGINT NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    description TEXT,
-    directions TEXT,
-    cook_time_min INT,
-    prep_time_min INT,
-    servings INT,
-    status VARCHAR(50),
+    title VARCHAR(255) NOT NULL, 
+    total_time_to_make INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT fk_recipes_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
