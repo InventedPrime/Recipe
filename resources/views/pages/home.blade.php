@@ -23,7 +23,7 @@
                 and connect with food enthusiasts.
             </p>
             <div class="hero-buttons">
-                <button onclick="document.querySelector('#latest-grid').scrollIntoView({ behavior: 'smooth' })"
+                <button onclick="window.location.href='{{ route('search') }}'"
                     class="btn-primary">
                     Explore Recipes
                 </button>
@@ -33,21 +33,17 @@
 
 
     <!-- Latest Recipes Section -->
-    <section class="section latest-section">
+    <!-- <section class="section latest-section">
         <h2 class="section-title">Latest Creations</h2>
         <p class="section-subtitle">Fresh recipes from our community</p>
 
         <div class="recipe-grid" id="latest-grid">
-            <!-- Latest recipe cards will be populated here -->
+           
         </div>
 
-    </section>
-
+    </section> -->
     <!-- footer-->
     @include('layouts.footer.main')
-    <!-- javascript -->
-
-    <script></script>
 
 </body>
 

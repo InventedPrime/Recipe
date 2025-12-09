@@ -121,9 +121,6 @@ html.dark .navbar-nav a {
 .search-bar {
   display: flex;
   gap: 0.5rem;
-
-  input {
-  }
 }
 .search-bar input {
   padding: 0.5rem;
@@ -614,4 +611,61 @@ footer {
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
+}
+
+/* General Page Colors */
+body {
+    background-color: #FFF8E1;
+    color: #5A3E1B;
+}
+
+/* Section styling */
+.profile-section {
+    background: #FFEFC7;
+    border: 2px solid #FFD48A; 
+}
+
+/* Buttons */
+.btn {
+    background-color: #FFB84C; 
+    border: 2px solid #FF9F1C;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: 0.2s;
+}
+.btn:hover {
+    background-color: #FFA726;
+}
+
+/* Warning / Deactivate Button */
+.btn-warning {
+    background-color: #FF7043;
+    border: 2px solid #E85C2C;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    color: white;
+    transition: 0.2s;
+}
+.btn-warning:hover {
+    background-color: #F4511E;
+}
+
+/* Inputs */
+.input {
+    border: 2px solid #FFCF7B;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #FFF5DA;
+}
+.input:focus {
+    outline: none;
+    border-color: #FFAF3D;
+}
+
+/* Profile picture placeholder */
+.profile-pic-placeholder {
+    background-color: #FFE3A3;
+    border: 3px solid #FFC766;
 }

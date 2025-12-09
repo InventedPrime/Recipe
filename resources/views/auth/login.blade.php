@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Login - RecipeHub</title>
+  <title>RecipeHome</title>
   @vite(['resources/css/app.css'])
   <style> .card{max-width:420px;margin:6rem auto;padding:2rem;background:var(--card-bg,#fff);border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.06)} html.dark .card{background:#111}</style>
 </head>
