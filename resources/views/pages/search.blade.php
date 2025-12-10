@@ -29,7 +29,7 @@
     <section class="section search-container">
         @if ($recipes->count())
             @foreach ($recipes as $recipe)
-                <div class="recipe-search-container">
+                <a class="recipe-search-container" href="{{ route('recipe.view', ['id' => $recipe->id]) }}">
                     <img class="recipe-search-image" src="data:image/png;base64, {{ $recipe->image->image_data }}"
                         alt="">
                     <div class="recipe-tag-container"> {{-- category tag --}}
@@ -47,14 +47,9 @@
                         <h1>{{ $recipe->title }}</h1> {{-- title of recipe --}}
                         <p>By {{ $recipe->user->name }}</p> {{-- Users name who created it --}}
                         <p>{{ $recipe->total_time_to_make }} minutes</p>
-                        <p>Likes: ?</p>
                         {{-- How long it takes to make --}}
-
                     </div>
-                    <button class="recipe-like-button"> {{-- like button --}}
-                        <img class="recipe-like-image" src={{ asset('img/likes.png') }} alt="">
-                    </button>
-                </div>
+                </a>
             @endforeach
         @else
             <p>No recipes found.</p>

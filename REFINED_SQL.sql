@@ -45,37 +45,6 @@ CREATE TABLE ingredients (
     CONSTRAINT fk_ingredients_recipe FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
 );
 
--- COMMENTS
-CREATE TABLE comments (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    recipe_id BIGINT NOT NULL,
-    user_id BIGINT NOT NULL,
-    body TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_comments_recipe FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE,
-    CONSTRAINT fk_comments_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
-
--- LIKES
-CREATE TABLE likes (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    user_id BIGINT NOT NULL,
-    recipe_id BIGINT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_likes_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    CONSTRAINT fk_likes_recipe FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
-);
-
--- SAVES
-CREATE TABLE saves (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    user_id BIGINT NOT NULL,
-    recipe_id BIGINT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_saves_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    CONSTRAINT fk_saves_recipe FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE
-);
-
 -- RECIPE_CATEGORIES
 CREATE TABLE recipe_categories (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,

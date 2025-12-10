@@ -20,6 +20,12 @@ Route::get('/search', function () {
     return view('pages.search', ['recipes' => $recipes]);
 })->name('search');
 
+// View Recipe Page
+Route::get('/recipe/{id}', function ($id) {
+    if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
+    $recipe = Recipe::with('image', 'user')->findOrFail($id);
+    return view('pages.recipe', ['recipe' => $recipe]);
+})->name('recipe.view');
 
 // Profile Page
 Route::get('/profile', function () {

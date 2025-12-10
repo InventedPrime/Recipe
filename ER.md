@@ -49,28 +49,6 @@ erDiagram
       int position
     }
 
-    COMMENTS {
-      bigint id PK
-      bigint recipe_id FK
-      bigint user_id FK
-      text body
-      timestamp created_at
-    }
-
-    LIKES {
-      bigint id PK
-      bigint user_id FK
-      bigint recipe_id FK
-      timestamp created_at
-    }
-
-    SAVES {
-      bigint id PK
-      bigint user_id FK
-      bigint recipe_id FK
-      timestamp created_at
-    }
-
     RECIPE_CATEGORIES {
       bigint id PK
       bigint recipe_id FK
@@ -80,12 +58,6 @@ erDiagram
     USERS ||--o{ RECIPES : owns
     RECIPES ||--o{ RECIPE_IMAGES : has
     RECIPES ||--o{ INGREDIENTS : has
-    RECIPES ||--o{ COMMENTS : receives
-    USERS ||--o{ COMMENTS : writes
-    USERS ||--o{ LIKES : likes
-    RECIPES ||--o{ LIKES : liked_by
-    USERS ||--o{ SAVES : saves
-    RECIPES ||--o{ SAVES : saved_by
     RECIPES ||--o{ RECIPE_CATEGORIES : categorized
     CATEGORIES ||--o{ RECIPE_CATEGORIES : contains
 ```
