@@ -41,7 +41,7 @@ Route::get('/upload', function () {
 })->name('upload');
 
 Route::post('/upload', function (Request $request) {
-    dd($request->all());
+    // dd($request->all());
     if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
 
     $file = $request->file('recipe_image');
