@@ -534,6 +534,8 @@ footer {
   }
 }
 /* search page container*/
+
+
 .search-container {
   display: flex;
   justify-content: flex-start;
@@ -551,6 +553,24 @@ footer {
   border-top-style: solid;
   border-bottom-style: none;
   background: linear-gradient(180deg, transparent, rgb(255 183 0 / 36%));
+}
+.search-container-no-recipe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  min-height: 400px;
+  width: 100%;
+  img {
+    width: 200px;
+    height: auto;
+  }
+  h2 {
+    width: 35%;
+    text-align: center;
+    color: black;
+  }
 } 
  /*search page category*/
  .category-container {

@@ -52,7 +52,10 @@
                 </a>
             @endforeach
         @else
-            <p>No recipes found.</p>
+            <div class="search-container-no-recipe">
+                <img src={{ asset('img/no_recipe_found.png') }} />
+                <h2>We couldn't find any food, looks like its time to hit the gym!</h2>
+            </div>
         @endif
     </section>
 

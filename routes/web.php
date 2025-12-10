@@ -62,6 +62,9 @@ Route::post('/upload', function (Request $request) {
     $recipeImage->save();
 
     $recipeCategory = new RecipeCategory();
+    $recipeCategory->recipe_id = $recipe->id;
+    $recipeCategory->category_id = $request->category_id;
+    $recipeCategory->save();
 
     return back()->with('status', 'Recipe uploaded successfully!');
 })->name('form.uploadRecipe');
