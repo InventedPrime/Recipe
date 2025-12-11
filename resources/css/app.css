@@ -203,6 +203,7 @@ html.dark .hero-tagline {
 }
 .hero-subtitle {
   font-size: 1.25rem;
+  font-weight: bold;
   color: #566;
   margin-bottom: 2rem;
 }
