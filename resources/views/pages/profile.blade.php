@@ -1,4 +1,18 @@
-<main class="max-w-4xl mx-auto mt-10 p-6">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
+<body>
+
+    @include('layouts.header.upload')
+
+    <main class="max-w-4xl mx-auto mt-10 p-6">
     <h1 class="text-3xl font-bold mb-6">Profile Settings</h1>
 
     <!-- Profile Picture Section -->
@@ -86,3 +100,10 @@
         </div>
     </section>
 </main>
+    </main>
+
+    @include('layouts.footer.main')
+
+</body>
+
+</html>
