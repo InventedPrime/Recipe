@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Http\Controllers\{AuthController, UploadController};
+use App\Http\Controllers\{AuthController, UploadController, ProfileController};
 use App\Models\{Recipe};
 
 // Home Page
@@ -60,3 +60,6 @@ Route::get('/register', [AuthController::class, 'showRegister'])->name('register
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
  
+Route::post('/profile/update-picture', [ProfileController::class, 'updatePicture'])->name('profile.updatePicture');
+Route::post('/profile/update-info', [ProfileController::class, 'updateInfo'])->name('profile.updateInfo');
+Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
