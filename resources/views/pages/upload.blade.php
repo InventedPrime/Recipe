@@ -80,16 +80,16 @@
             <div class="upload-form-div">
                 <h1>Category</h1>
                 <select class="upload-category" name="category_id" id="category" required>
-                    <option value="1">🍔 American</option>
-                    <option value="2">🍱 Asian</option>
-                    <option value="3">🍝 Italian</option>
-                    <option value="4">🌮 Mexican</option>
-                    <option value="5">🥙 Mediterranean</option>
-                    <option value="6">🥮 Dessert</option>
-                    <option value="7">🥐 French</option>
-                    <option value="8">🥦 Vegan</option>
-                    <option value="9">🦞 Seafood</option>
-                    <option value="10">🍳 Breakfast</option>
+                    <option value=1>🍔 American</option>
+                    <option value=2>🍱 Asian</option>
+                    <option value=3>🍝 Italian</option>
+                    <option value=4>🌮 Mexican</option>
+                    <option value=5>🥙 Mediterranean</option>
+                    <option value=6>🥮 Dessert</option>
+                    <option value=7>🥐 French</option>
+                    <option value=8>🥦 Vegan</option>
+                    <option value=9>🦞 Seafood</option>
+                    <option value=10>🍳 Breakfast</option>
                 </select>
             </div>
 
