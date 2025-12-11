@@ -53,16 +53,19 @@ html.dark header.navbar {
   align-items: center;
 
   a {
+    font-weight: bold;
+    font-size: 1.25rem;
     text-decoration:none;
     color:inherit;
   }
 
   button {
+    font-weight: bold;
+    font-size: 1.25rem;
     background:none;
     border:none;
     color:var(--orange);
     cursor:pointer;
-    font-weight:600;
   }
 }
 .navbar-container {
@@ -70,7 +73,7 @@ html.dark header.navbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10rem;
+  gap: 20rem;
 }
 .navbar-logo {
   display: flex;
@@ -78,6 +81,7 @@ html.dark header.navbar {
   justify-content: center;
   align-items: center;
   font-size: 2.5rem;
+  font-weight: bold;
   font-weight: bold;
   font-family:Apple Chancery;
   color: var(--yellow);
@@ -98,15 +102,15 @@ html.dark header.navbar {
 
   a {
     font-size: 20px;
+    font-weight: bold;
     text-decoration: none;
     color: black;
     padding: 10px;
+    width: 150px;
+    text-align: center;
     box-shadow: 0px 8px 2px var(--yellow);
   }
   a:hover {
-    font-size: 20px;
-    color: black;
-    padding: 10px;
     margin-top: 10px;
     box-shadow: 0px 4px 2px var(--yellow);
   }
@@ -521,7 +525,7 @@ footer {
   padding-right: 0.2rem;
   border-style: solid;
   border-radius: 5px;
-  background: linear-gradient(90deg, rgb(255, 225, 0), transparent);
+  background: linear-gradient(90deg, rgb(255, 225, 0), var(--lightred));
 
   img {
     width: 15px;
@@ -529,6 +533,7 @@ footer {
   }
   p  {
     font-size: 12px;
+    font-weight: bold;
     color: black;
     font-weight: bold;
   }
@@ -583,7 +588,12 @@ footer {
   border-bottom-right-radius: 30px;
   background: linear-gradient(0deg, rgb(255 178 0 / 23%), transparent);
 }
-
+.category-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
  .div-category {
   display: flex;
   flex-direction:column;
@@ -592,6 +602,10 @@ footer {
   justify-content: space-evenly;
   width: 100%;
   transition: 0.25s;
+
+  p {
+    font-weight: bold;
+  }
  }
   .div-category:hover {
   scale: 1.2;

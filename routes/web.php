@@ -1,12 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\{AuthController, UploadController};
-use App\Models\{Recipe, RecipeCategory, RecipeImage};
-use Illuminate\Support\Facades\View;
-
+use App\Models\{Recipe};
 
 // Home Page
 Route::get('/', function () {
@@ -15,10 +12,29 @@ Route::get('/', function () {
 
 // Search Page
 Route::get('/search', function () {
-    if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
+    if ($redirect = (new AuthController)->verifyLoginStatus()) return 
+    $redirect;
+    session()->put('selected_category', false);
     $recipes = Recipe::with('image', 'user')->paginate(30);
     return view('pages.search', ['recipes' => $recipes]);
 })->name('search');
+
+Route::post('/search', function (Request $request) {
+    if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
+        session()->put('selected_category', true);
+    $categoryId = $request->input('category_id');
+    
+    if ($categoryId === 'reset') {
+        return redirect()->route('search');
+    }
+    $recipes = Recipe::with(['image', 'user'])
+    ->whereHas('categories', function ($query) use ($categoryId) {
+        $query->where('category_id', '=', $categoryId);
+    })
+    ->paginate(30);
+
+    return view('pages.search', ['recipes' => $recipes]);
+})->name('post.search');
 
 // View Recipe Page
 Route::get('/recipe/{id}', function ($id) {
@@ -36,12 +52,6 @@ Route::get('/profile', function () {
 // Upload Page
 Route::get('/upload', [UploadController::class, 'showUpload'])->name('upload');
 Route::post('/upload', [UploadController::class, 'store'])->name('form.uploadRecipe');
-
-// Settings Page
-// Route::get('/settings', function () {
-//     if ($redirect = (new AuthController)->verifyLoginStatus()) return $redirect;
-//     return view('pages.settings');
-// })->name('settings');
 
 // Authentication routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

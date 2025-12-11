@@ -12,6 +12,12 @@
 
     @include('layouts.header.upload')
 
+    @if (session('status') == 'Recipe uploaded successfully!')
+        <script>
+            alert('Recipe uploaded successfully!');
+        </script>
+    @endif
+
 
     <section class="section section-upload-container">
         <form action="{{ route('form.uploadRecipe') }}" method="POST" enctype="multipart/form-data" class="upload-form">
@@ -35,8 +41,8 @@
                         max="200" required>
 
                     <h1>$</h1><input name="ingredients[0][cost]" type="number"
-                        placeholder="Cost per..."min={{ 1.0 }} max={{ 200.0 }} step={{ 0.01 }}
-                        required>
+                        placeholder="Cost per..."min={{ 1.0 }} max={{ 200.0 }}
+                        step={{ 0.01 }} required>
                 </div>
 
                 <div>
@@ -90,6 +96,7 @@
                     <option value=8>🥦 Vegan</option>
                     <option value=9>🦞 Seafood</option>
                     <option value=10>🍳 Breakfast</option>
+                    <option value=11>🍛 Indian</option>
                 </select>
             </div>
 
@@ -107,6 +114,11 @@
     <script>
         document.getElementById('recipe_image').addEventListener('change', function(event) {
             const [file] = event.target.files;
+            if (file.size > 120000000) {
+                alert('File size exceeds 114.44MB. Please choose a smaller file.');
+                event.target.value = '';
+                return;
+            }
             if (file) {
                 // reverse the effects of contain cause of the plus icon
                 document.getElementById('upload-image').style.objectFit =

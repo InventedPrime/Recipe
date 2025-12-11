@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         Category::create(['name' => 'vegan']);
         Category::create(['name' => 'seafood']);
         Category::create(['name' => 'breakfast']);
+        Category::create(['name' => 'indian']);
 
         User::factory()->create([
             'name' => 'Test User',

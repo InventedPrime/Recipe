@@ -14,27 +14,37 @@
 
 
     <section class="section category-container">
-        @include('layouts.categoryIcons.american')
-        @include('layouts.categoryIcons.asian')
-        @include('layouts.categoryIcons.italian')
-        @include('layouts.categoryIcons.mexican')
-        @include('layouts.categoryIcons.mediterranean')
-        @include('layouts.categoryIcons.dessert')
-        @include('layouts.categoryIcons.french')
-        @include('layouts.categoryIcons.vegan')
-        @include('layouts.categoryIcons.seafood')
-        @include('layouts.categoryIcons.breakfast')
+        <form class="category-form" action={{ route('post.search') }} method="POST">
+            @csrf
+            @if (Session::get('selected_category') === true)
+                @include('layouts.categoryIcons.reset')
+            @else
+                {{-- Empty --}}
+            @endif
+            @include('layouts.categoryIcons.american')
+            @include('layouts.categoryIcons.asian')
+            @include('layouts.categoryIcons.italian')
+            @include('layouts.categoryIcons.mexican')
+            @include('layouts.categoryIcons.mediterranean')
+            @include('layouts.categoryIcons.dessert')
+            @include('layouts.categoryIcons.french')
+            @include('layouts.categoryIcons.vegan')
+            @include('layouts.categoryIcons.seafood')
+            @include('layouts.categoryIcons.indian')
+            @include('layouts.categoryIcons.breakfast')
+        </form>
     </section>
 
     <section class="section search-container">
         @if ($recipes->count())
             @foreach ($recipes as $recipe)
                 <a class="recipe-search-container" href="{{ route('recipe.view', ['id' => $recipe->id]) }}">
-                    <img class="recipe-search-image" src="data:image/png;base64, {{ $recipe->image->image_data }}" alt="">
-                    @if($recipe->categories && $recipe->categories->count())
+                    <img class="recipe-search-image" src="data:image/png;base64, {{ $recipe->image->image_data }}"
+                        alt="">
+                    @if ($recipe->categories && $recipe->categories->count())
                         <div class="recipe-tag-container"> {{-- category tag --}}
                             @php $cat = $recipe->categories->first(); @endphp
-                            @if($cat)
+                            @if ($cat)
                                 <div class="recipe-tag">
                                     <img src="{{ asset('img/tag.png') }}" alt="tag">
                                     <p>{{ $cat->name }}</p>

@@ -1,7 +1,6 @@
-
 <div class="div-category">
-   <button class="button-category-icon">
-         🍱
-   </button>   
-   <p>Asian</p>
+    <button name="category_id" value="2" class="button-category-icon">
+        🍱
+    </button>
+    <p>Asian</p>
 </div>
