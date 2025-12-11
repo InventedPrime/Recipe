@@ -35,7 +35,7 @@
                         max="200" required>
 
                     <h1>$</h1><input name="ingredients[0][cost]" type="number"
-                        placeholder="Cost..."min={{ 1.0 }} max={{ 200.0 }} step={{ 0.01 }}
+                        placeholder="Cost per..."min={{ 1.0 }} max={{ 200.0 }} step={{ 0.01 }}
                         required>
                 </div>
 

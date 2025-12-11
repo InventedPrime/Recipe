@@ -31,4 +31,9 @@ class Recipe extends Model
     {
         return $this->belongsToMany(Category::class, 'recipe_categories');
     }
+
+    public function steps()
+    {
+        return $this->hasMany(RecipeSteps::class, 'recipe_id')->orderBy('step_order');
+    }
 }
