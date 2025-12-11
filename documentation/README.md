@@ -2,6 +2,8 @@
 
 Recipe App
 
+> by Jake, Evan, and Mike
+
 ## Table of Contents
 
 [database_setup](./db_setup.md)
