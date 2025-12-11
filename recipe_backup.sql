@@ -236,6 +236,19 @@ INSERT INTO `users` VALUES (1,'Mike De La Cruz','dlcgmike@gmail.com','$2y$12$.k5
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+CREATE TABLE `recipe_steps` (
+`step_id` INT NOT NULL AUTO_INCREMENT , 
+`recipe_id` INT NOT NULL , 
+`step_order` INT NOT NULL , 
+`description` TEXT NOT NULL , 
+PRIMARY KEY (`step_id`)) ENGINE = InnoDB;
+
+ALTER TABLE `recipe_steps` CHANGE `recipe_id` `recipe_id` BIGINT(20) NOT NULL;
+ALTER TABLE `recipe_steps` CHANGE `recipe_id` `recipe_id` BIGINT(20) UNSIGNED NOT NULL;
+ALTER TABLE `recipe_steps` ADD CONSTRAINT `steps_recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `recipes`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `ingredients` CHANGE `title` `title` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL, CHANGE `quantity` `quantity` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL, CHANGE `cost` `cost` DECIMAL(9,2) NULL DEFAULT NULL;
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
