@@ -22,10 +22,11 @@ use Recipe;
 5. open the `.env` file and update the following variables with your database credentials:
 
     ```env
-    DB_DATABASE=Recipe
+    DB_DATABASE=Recipe (leave it as Recipe)
     DB_USERNAME=your_database_username
     DB_PORT=your_database_port
     DB_PASSWORD=your_database_password (usually empty for local setups)
+    CACHE_STORE=file (change it to file)
     ```
 
 6. Generate the application key by running the following command in your terminal:
