@@ -27,6 +27,7 @@ use Recipe;
     DB_PORT=your_database_port
     DB_PASSWORD=your_database_password (usually empty for local setups)
     CACHE_STORE=file (change it to file)
+    SESSION_DRIVER=file (make sure its set to file)
     ```
 
 6. Generate the application key by running the following command in your terminal:
